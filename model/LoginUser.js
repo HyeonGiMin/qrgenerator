@@ -1,0 +1,24 @@
+module.exports=(sequelize,DataTypes)=>{
+    return sequelize.define('LoginUser',{
+        _id:{
+            type:DataTypes.INTEGER,
+            primaryKey:true,
+            allowNull:false,
+            autoIncrement:true
+        },
+        id:{
+            type:DataTypes.STRING(20),
+            allowNull:false
+        },
+        password:{
+            type:DataTypes.STRING(20),
+            allowNull:false
+        },
+        name:{
+            type:DataTypes.STRING(20),
+            allowNull:false
+        }
+    },{
+        timestamps:false
+    })
+}

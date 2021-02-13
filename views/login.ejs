@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>  
+</head>
+  <body>
+      <form action="#">
+        <label>ID:</label><input id="id" type="text">
+        <label>PASSWORD:</label><input id="password" type="password">
+      </form>
+      <button id="submit"  type="button"></button>
+  </body>
+  <script>
+     $("#submit").on('click',()=>{
+         alert("!!")
+        var id=  $("#id").val()
+        var password = $("#password").val();
+        axios({
+            method: 'post',
+            url: '/users',
+            data: {
+                id: id,
+                password: password
+            }
+        }).then((data)=>{
+       
+            console.log(data)
+            alert("Login!!")
+        })
+     })
+  </script>
+</html>
