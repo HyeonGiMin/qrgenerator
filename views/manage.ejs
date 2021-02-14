@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>  
+</head>
+  <body>
+      <h3><%= userId %></h3>
+      <button>등록</button>
+      <h3>리스트</h3>
+      <table id="UserList">
+          <thead>
+              <tr>
+                  <th>No</th>
+                  <th>이름</th>
+                  <th>나이</th>
+                  <th>연락처</th>
+                  <th>최근 방문 시간</th>
+                  <th>QR</th>
+              </tr>
+          </thead>
+          <tbody>
+              <% data.forEach(function (val,index) {%>
+                <tr>
+                    <td><%=val.no%></td>
+                    <td><%=val.name%></td>
+                    <td><%=val.age%></td>
+                    <td><%=val.phone%></td>
+                    <td><%=val.recent%></td>
+                    <td><button type="button" name="<%=val.no%>"></button></td>
+                </tr>
+                <% }) %>
+          </tbody>
+          
+         
+      </table>
+  </body>
+  <script>
+    
+  </script>
+</html>
