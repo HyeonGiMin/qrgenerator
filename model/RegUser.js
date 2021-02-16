@@ -1,5 +1,5 @@
 module.exports=(sequelize,DataTypes)=>{
-    const RegUser =sequelize.define('RegUser',{
+    return sequelize.define('RegUser',{
         _id:{
             type:DataTypes.INTEGER,
             primaryKey:true,
@@ -7,53 +7,22 @@ module.exports=(sequelize,DataTypes)=>{
             autoIncrement:true
         },
         name:{
-            type:DataTypes.STRING(20),
+            type:DataTypes.STRING,
             allowNull:false
         },
         age:{
-            tyep:DataTypes.STRING(20),
+            type:DataTypes.INTEGER,
             allowNull:false
         },
         phone:{
-            type:DataTypes.STRING(50),
+            type:DataTypes.STRING,
             allowNull:false
         }
     },{
         timestamps:false
     })
 
-    const QRLog =sequelize.define('QRLog',{
-        _id:{
-            type:DataTypes.INTEGER,
-            primaryKey:true,
-            allowNull:false,
-            autoIncrement:true
-        },
-        userNo:{
-            type:DataTypes.INTEGER,
-            allowNull:false,
-            references:{model:'RegUser',key:'_id'}
-        },
-        name:{
-            type:DataTypes.STRING(20),
-            allowNull:false
-        },
-        age:{
-            tyep:DataTypes.STRING(20),
-            allowNull:false
-        },
-        phone:{
-            type:DataTypes.STRING(50),
-            allowNull:false
-        }
-    },{
-        timestamps:true
-    })
 
-    RegUser.hasMany(QRLog)
-
-    return {
-        QRLog,RegUser
-    }
+    return RegUser
 }
 

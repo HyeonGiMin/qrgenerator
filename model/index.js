@@ -11,5 +11,8 @@ db.sequelize=sequelize;
 db.Sequelize=Sequelize;
 
 db.LoginUser=require("./LoginUser")(sequelize,Sequelize);
+db.RegUser=require("./RegUser")(sequelize,Sequelize);
+db.QRLog=require("./log")(sequelize,Sequelize);
+
 
 module.exports =db;
