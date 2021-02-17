@@ -10,30 +10,7 @@
         <label>ID:</label><input id="id" type="text">
         <label>PASSWORD:</label><input id="password" type="password">
       </form>
-      <button id="submit"  type="button"></button>
+      <button id="submit"  type="button">로그인</button>
   </body>
-  <script>
-     $("#submit").on('click',()=>{
-         alert("!!")
-        var id=  $("#id").val()
-        var password = $("#password").val();
-        axios({
-            method: 'post',
-            url: '/users',
-            data: {
-                id: id,
-                password: password
-            }
-        }).then((data)=>{
-          
-            console.log(data)
-            if(data.success){
-              location.href="/main"
-            }else{
-              alert("Login Error")
-            }
-            
-        })
-     })
-  </script>
+  <script src="/javascripts/login.js"></script>
 </html>
