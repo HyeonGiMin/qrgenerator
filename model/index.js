@@ -14,5 +14,8 @@ db.LoginUser=require("./LoginUser")(sequelize,Sequelize);
 db.RegUser=require("./RegUser")(sequelize,Sequelize);
 db.QRLog=require("./log")(sequelize,Sequelize);
 
+db.RegUser.hasMany(db.QRLog, {foreignKey: 'userNo', sourceKey: '_id'});
+db.QRLog.belongsTo(db.RegUser)
+
 
 module.exports =db;

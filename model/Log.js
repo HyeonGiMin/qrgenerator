@@ -29,12 +29,6 @@ module.exports=(sequelize,DataTypes)=>{
         timestamps:true
     })
     
-    QRLog.associate = function (models) {
-        models.QRLog.hasMany(models.RegUser, {
-          foreignKey: 'userNo',
-          onDelete: 'cascade',
-        });
-      };
-
+ 
     return QRLog
 }

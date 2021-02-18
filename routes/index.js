@@ -39,4 +39,19 @@ router.get('/main',(req,res)=>{
     // res.render('error')
   }
 })
+
+router.get("/reg",(req,res)=>{
+
+  var session = req.session;
+  console.log(session.userId)
+  var userid=session.userId
+  if(session.userId!=null!=null){
+    res.render('addUser',{userId:userid})
+  }else{
+    // res.render('error')
+    res.json({
+      error:"ERROR"
+    })
+  }
+})
 module.exports = router;
