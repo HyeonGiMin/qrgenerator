@@ -11,7 +11,7 @@ module.exports=(sequelize,DataTypes)=>{
         userNo:{
             type:DataTypes.INTEGER,
             allowNull:false,
-            references:{model:'RegUser',key:'_id'}
+            // references:{model:'RegUser',key:'_id'}
         },
         name:{
             type:DataTypes.STRING(20),
@@ -24,9 +24,14 @@ module.exports=(sequelize,DataTypes)=>{
         phone:{
             type:DataTypes.STRING(50),
             allowNull:false
-        }
+        },
+        time: {
+            allowNull: false,
+            defaultValue: DataTypes.fn('now'),
+            type: DataTypes.DATE
+        },
     },{
-        timestamps:true
+        timestamps:false
     })
     
  
