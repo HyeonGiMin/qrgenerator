@@ -1,7 +1,7 @@
 var express = require('express');
 const session = require('express-session');
 var router = express.Router();
-var {LoginUser} =require('../model');
+var {LoginUser,RegUser} =require('../model');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -29,4 +29,32 @@ router.post('/',function(req,res){
      
     })
 })
+
+router.post('/reg',(req,res)=>{
+  var body=req.body;
+  var session = req.session;
+  var userName=body.name;
+  var userAge=body.phone;
+  var userPhone=body.age;
+  console.log(body)
+
+  RegUser.create({name: userName, age: userAge,phone:userPhone})
+  .then(result => {
+    console.log(result)
+    res.json({
+      "Success":true
+    });
+  })
+  .catch(err => {
+    res.json(({
+      "Success":false
+    }))
+  });
+})
+
+
+router.get('/logUser',(req,res)=>{
+  
+})
+
 module.exports = router;
