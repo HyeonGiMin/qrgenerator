@@ -26,20 +26,20 @@ $("#submit").on('click',()=>{
  })
  
  $("#regist").on('click',()=>{
-    var regUser={
-     
-    }
+    var userName =$("#addName").val();
+    var userAge = $("#addAge").val();
+    var userPhone = $("#addPhone").val();
     axios({
         method: 'post',
-        url: '/users',
+        url: '/users/reg',
         data: {
-            name:$("#name").val(),
-            phone:$("#phone").val(),
-            age:$("#age").val()
+            name:userName,
+            phone:userAge,
+            age:userPhone
         }
     }).then((res)=>{
-        alert("등록 되었습니다")
         if(res.data.Success){
+            alert("등록 되었습니다")
           location.href="/main"
         }else{
           alert("Login Error")
@@ -49,6 +49,10 @@ $("#submit").on('click',()=>{
     
 })
 
-$("#regist").on('click',()=>{
-    
-})
+$(document).on("click", ".QRGen", function() {
+    let userNo=$(this).attr("name");
+    console.log(userNo)
+    let url = `/qr/${userNo}`
+    location.href=url;
+
+  })
