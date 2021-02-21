@@ -23,13 +23,13 @@
           </thead>
           <tbody>
               <% data.forEach(function (val,index) {%>
-                <tr>
+                <tr >
                     <td><%=val.no%></td>
                     <td><%=val.name%></td>
                     <td><%=val.age%></td>
                     <td><%=val.phone%></td>
                     <td><%=val.recent%></td>
-                    <td><button type="button" name="<%=val.no%>"></button></td>
+                    <td><button type="button" class="QRGen" name="<%=val.no%>">QR</button></td>
                 </tr>
                 <% }) %>
           </tbody>

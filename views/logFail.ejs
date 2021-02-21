@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        에러 내용 <%= Error %>
+    </div>
+</body>
+<script>
+    var audio = new Audio('/sounds/error.mp3');
+    audio.play();
+    alert('실패하였습니다 다시 시도해 주세요');
+
+    if(confirm("교회 홈페이지로 이동합니까??")){
+        window.location = 'http://peace1004.com';
+    }
+
+</script>
+</html>
