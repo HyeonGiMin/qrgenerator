@@ -120,3 +120,4 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/node
 config/session.js
+config/db.config copy.json

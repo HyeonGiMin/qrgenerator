@@ -14,8 +14,18 @@ router.get('/', function(req, res, next) {
 
   var session = req.session;
 
-  res.render('login')
+  if(session==null){
+    res.redirect('/login')
+  }else{
+    res.redirect('/main')
+  }
+
+
 });
+
+router.get('/login',(req,res)=>{
+  res.render('login')
+})
 
 router.get('/main',(req,res)=>{
  var session = req.session;
