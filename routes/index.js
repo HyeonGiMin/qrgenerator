@@ -25,10 +25,10 @@ router.get('/main',(req,res)=>{
   // if(session.userId!=null){
     var db=[]
     RegUser.findAll({
-      // include: [{
-      //   model: QRLog,
-      //   attributes: ['userNo', 'updatedAt']
-      // }],
+      include: [{
+        model: QRLog,
+        attributes: ['userNo', 'time']
+      }],
       // where:{_id:QRLog.userNo}
     }).then((data)=>{
       console.log(data)
@@ -38,33 +38,39 @@ router.get('/main',(req,res)=>{
         resolve(db);
       });
     }).then((db)=>{
+      console.log("!!")
       //각각의 최신 로그를 가져온다.
       console.log("!!",db)
+      
       db.forEach((element,index) => {
         var CreeatedAt
+        console.log(element)
+
         QRLog.findOne({
           attributes: ['_id', 'userNo','time'],
           where:{'userNo':element._id},
           order: [ [ '_id', 'DESC' ]]
         }).then((data)=>{
+          console.log(data)
           if(data!=null){
-            CreeatedAt=data.time;
+            CreeatedAt=data.dataValues.time.format('yyyy-MM-dd(KS) HH:mm:ss');
+          }
+          console.log(CreeatedAt)
+          var tempData={
+            no:element._id,
+            name:element.name,
+            age:element.age,
+            phone:element.phone,
+            recent:CreeatedAt
+          }
+          userDataList.push(tempData)
+
+          //데이타의 길이가 같다면 마지막임을 알 수 있다.
+          if(userDataList.length==db.length){
+            res.render('manage',{userId:userid ,data:userDataList})
           }
         })
-
-        var tempData={
-          no:element._id,
-          name:element.name,
-          age:element.age,
-          phone:element.phone,
-          recent:CreeatedAt
-        }
-        userDataList.push(tempData)
-    
-       
-      });
-
-      res.render('manage',{userId:userid ,data:userDataList})
+      })
     })
     
 
