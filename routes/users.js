@@ -8,6 +8,14 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+router.get("/reg/admin",(req,res)=>{
+  res.render('regAdmin');
+})
+
+router.get('/reg/user',(req,res)=>{
+  res.render('regUser');
+})
+
 router.post('/',function(req,res){
   var body=req.body;
   var session = req.session;
@@ -30,15 +38,16 @@ router.post('/',function(req,res){
     })
 })
 
-router.post('/reg',(req,res)=>{
+//사용자 등록
+router.post('/userReg',(req,res)=>{
   var body=req.body;
   var session = req.session;
   var userName=body.name;
-  var userAge=body.phone;
-  var userPhone=body.age;
+  var userAge=body.age;
+  var userPhone=body.phone;
   console.log(body)
 
-  RegUser.create({name: userName, age: userAge,phone:userPhone})
+  RegUser.create({name: userName, age: userAge ,phone:userPhone})
   .then(result => {
     console.log(result)
     res.json({
