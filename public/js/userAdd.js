@@ -61,3 +61,7 @@ $("#btnUserAdd").on('click',()=>{
     })
     
 })
+
+$("#btnBackMain").on('click',()=>{
+    location.href='/main'
+})

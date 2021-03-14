@@ -61,9 +61,50 @@ router.post('/userReg',(req,res)=>{
   });
 })
 
+router.post('/adminReg',(req,res)=>{
+  var body=req.body;
+  var session = req.session;
+  var adminName=body.name;
+  var adminId=body.id;
+  var adminPassword=body.password;
+
+  LoginUser.create({id: adminId, password: adminPassword ,name:adminName})
+  .then(result => {
+    console.log(result)
+    res.json({
+      "Success":true
+    });
+  })
+  .catch(err => {
+    res.json(({
+      "Success":false
+    }))
+  });
+
+
+
+})
+
 
 router.get('/logUser',(req,res)=>{
   
+})
+
+router.post('/modify/regUser',(req,res)=>{
+  var body=req.body;
+  console.log(body)
+
+  RegUser.update({name: body.name,age:body.age,phone:body.phone}, {where: {_id: body.no}})
+  .then(result => {
+     res.json({
+      result_code:200
+     });
+  })
+  .catch(err => {
+    res.json({
+      result_code:500
+     });
+  });
 })
 
 module.exports = router;

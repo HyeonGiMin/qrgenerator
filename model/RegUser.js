@@ -17,7 +17,11 @@ module.exports=(sequelize,DataTypes)=>{
         phone:{
             type:DataTypes.STRING,
             allowNull:false
-        }
+        },
+        // rfid:{
+        //     type:DataTypes.STRING,
+        //     allowNull:true
+        // }
     },{
         timestamps:false
     })

@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var qrRouter    = require('./routes/qrgenerator');
 var logRouter   = require('./routes/log');
+var manageRouter= require('./routes/manage')
 var sequelize=require('./model').sequelize;
 
 var app = express();
@@ -33,6 +34,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/qr',qrRouter);
 app.use('/log',logRouter);
+app.use('/manage',manageRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

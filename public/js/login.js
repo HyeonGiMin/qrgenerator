@@ -12,6 +12,7 @@ $("#submit_Login").on('click',()=>{
         console.log(res.data)
         console.log(res.data.Success)
         if(res.data.Success){
+          alert(`${id}님 로그인 하였습니다`)
           location.href="/main"
         }else{
           alert("Login Error")
